@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>happy birthday jo💖</title>
+    <!-- Google Fonts para sa eleganteng sulat at modernong disenyo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para sa mga cute na icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==================== 1. COLOR VARIABLES & SETUP ==================== */
+        :root {
+            --primary-pink: #ff758f;
+            --secondary-pink: #ff8fa3;
+            --accent-purple: #c77dff;
+            --dark-gray: #4a4e69;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow: 0 8px 32px 0 rgba(255, 117, 143, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(-45deg, #ffe5ec, #ffc2d1, #f0e6ff, #ffe5ec);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ==================== 2. MAIN CONTAINER ==================== */
+        .wrapper {
+            width: 90%;
+            max-width: 600px;
+            min-height: 620px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* ==================== 3. FLOATING ELEMENTS & MUSIC ==================== */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        .music-control i {
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            color: var(--primary-pink);
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }
+        }
+
+        /* ==================== 4. SCREEN 1: THE UNLOCK CARD ==================== */
+        #unlock-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-gift-gif {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(255, 117, 143, 0.2);
+        }
+
+        .title-fancy {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-pink);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .subtitle {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .unlock-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 117, 143, 0.4);
+            transition: all 0.3s;
+        }
+
+        .unlock-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 117, 143, 0.5);
+        }
+
+        /* ==================== 5. SCREEN 2: SURPRISE DASHBOARD ==================== */
+        #dashboard-screen {
+            display: none;
+        }
+
+        /* Celebrant Feature Photo Frame */
+        .celebrant-frame {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+            box-shadow: 0 10px 25px rgba(255, 117, 143, 0.3);
+        }
+
+        .celebrant-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--glass-border);
+            padding: 10px 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-btn i {
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+        }
+
+        .nav-btn.active {
+            background: var(--primary-pink);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 117, 143, 0.3);
+        }
+
+        .nav-btn.active i {
+            color: white;
+        }
+
+        /* ==================== 6. TAB CONTENT SECTIONS ==================== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .tab-content.active-tab {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tab 1: Letter Section */
+        .letter-box {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.4);
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .letter-box p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        /* Tab 2: Grid */
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.03);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .memory-caption {
+            font-size: 0.8rem;
+            padding: 8px;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        /* Tab 3: Cake Section */
+        .cake-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cake-gif {
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .candle-btn {
+            background: linear-gradient(135deg, #ffd166, #f78c6c);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(247, 140, 108, 0.3);
+            transition: all 0.3s;
+        }
+
+        .candle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(247, 140, 108, 0.4);
+        }
+
+        /* ==================== 7. MEDIA QUERIES (RESPONSIVENESS) ==================== */
+        @media screen and (max-width: 480px) {
+            .wrapper {
+                padding: 20px 15px;
+                min-height: 580px;
+            }
+
+            .title-fancy {
+                font-size: 20px;
+                font-family: roboto;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .celebrant-frame {
+                width: 120px;
+                height: 120px;
+            }
+
+            .nav-btn {
+                font-size: 0.8rem;
+                padding: 8px 5px;
+            }
+
+            .nav-btn i {
+                font-size: 1rem;
+            }
+
+            .letter-box {
+                max-height: 220px;
+                padding: 15px;
+            }
+
+            .memories-grid {
+                max-height: 220px;
+            }
+
+            .memory-card img {
+                height: 90px;
+            }
+        }
+
+        /* Custom Scrollbar para sa Scrollable Boxes */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-pink);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lumulutang na Music Control Button -->
+    <button class="music-control" onclick="toggleMusic()">
+        <i id="music-icon" class="fa-solid fa-music"></i>
+    </button>
+
+    <!-- 🎵 IYONG BACKGROUND MUSIC -->
+    <!-- Palitan ang link sa src="..." kung may sarili kang mp3 link. Ginamit ko ang isang malambot na piano tune sa ngayon bilang fallback. -->
+    <audio id="bg-music" src="birthday.mp3" loop></audio>
+
+    <div class="wrapper">
+        
+        <!-- ==================== SCREEN 1: UNLOCK CARD ==================== -->
+        <div id="unlock-screen">
+            <!-- Cute Greeting GIF sa unahan -->
+            <img class="main-gift-gif" src="alien.gif" alt="Unlocking Love GIF">
+            
+            <h1 class="title-fancy">HAPPY BIRTHDAY JOLINA!</h1>
+            <p class="subtitle">Mayda ko simple nga surprise haim just click the button 🤭.</p>
+            
+            <button class="unlock-btn" onclick="unlockSurprise()">
+                Open Surprise ✨
+            </button>
+        </div>
+
+        <!-- ==================== SCREEN 2: MAIN DASHBOARD ==================== -->
+        <div id="dashboard-screen">
+            
+            <!-- 📸 PANGUNAHING LITRATO NIYA (Celebrant's Highlight Photo) -->
+            <!-- Palitan ang 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400' ng link ng pinaka-magandang litrato niya! -->
+            <div class="celebrant-frame">
+                <img src="jolina.jpeg" alt="The Beautiful Birthday Celebrant">
+            </div>
+
+            <h1 class="title-fancy" style="font-size: 20px; margin-bottom: 15px; font-family: comic neue;">🎉 Happy Birthday!🎈<br>JOLINA</h1>
+
+            <!-- 📱 Nav Buttons (Clickable tabs) -->
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="switchTab('letter')">
+                    <i class="fa-solid fa-envelope-heart"></i>
+                    Letter
+                </button>
+                <button class="nav-btn" onclick="switchTab('memories')">
+                    <i class="fa-solid fa-images"></i>
+                    Memories
+                </button>
+                <button class="nav-btn" onclick="switchTab('wish')">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    Make a Wish
+                </button>
+            </div>
+
+            <!-- TAB CONTENT 1: MAHABANG LIHAM PARA SA KANIYA -->
+            <div id="letter" class="tab-content active-tab">
+                <div class="letter-box">
+                    <p><strong>Dearest Special Someone,</strong></p>
+                   <p>
+On your special day, I just want to say I’m proud of you. I’ve seen you struggle, but you never gave up.
+
+I’m lucky to have you as my classmate and friend.
+</p>
+
+<p>
+Thanks for the laughs, the help, and the good vibes every day. I hope you have a really happy birthday—you deserve it.
+</p>
+
+<p>
+I’m always here for you as your friend.
+
+Happy Birthday Jo! 🎉
+</p>                </div>
+            </div>
+
+            <!-- TAB CONTENT 2: MEMORIES GALERIA (Pwedeng palitan ang mga links ng sariling picture niyo!) -->
+            <div id="memories" class="tab-content">
+                <div class="memories-grid">
+                    
+                    <!-- Litrato 1 -->
+                    <div class="memory-card">
+                        <img src="gif1.gif" alt="Memory 1">
+                        <div class="memory-caption">🧁</div>
+                    </div>
+                    
+                    <!-- Litrato 2 -->
+                    <div class="memory-card">
+                        <img src="gif2.gif" alt="Memory 2">
+                        <div class="memory-caption">🍰</div>
+                    </div>
+
+                    <!-- Litrato 3 -->
+                    <div class="memory-card">
+                        <img src="gif3.gif" alt="Memory 3">
+                        <div class="memory-caption">🎁</div>
+                    </div>
+
+                    <!-- Litrato 4 -->
+                    <div class="memory-card">
+                        <img src="gif4.gif" alt="Memory 4">
+                        <div class="memory-caption">🥳</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 3: INTERACTIVE CAKE & WISH -->
+            <div id="wish" class="tab-content">
+                <div class="cake-area">
+                    <p class="subtitle" id="cake-instruction" style="font-weight: 600;"> make a wish muna before ig click!<br>💌</p>
+                    
+                    <!-- Interactive Blow-able Cake GIF -->
+                    <img id="birthday-cake" class="cake-gif" src="cake.gif" alt="Lit Birthday Candle">
+                    
+                    <button class="candle-btn" id="blow-btn" onclick="blowCandle()">
+                        Blow Candle 🕯️
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Confetti & Floating effects scripts -->
+    <script>
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        let isMusicPlaying = false;
+
+        // I-toggle ang Music Play at Pause
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audio.pause();
+                musicIcon.className = 'fa-solid fa-volume-xmark';
+                isMusicPlaying = false;
+            } else {
+                audio.play().catch(err => console.log("need hin interaction para tumugtog."));
+                musicIcon.className = 'fa-solid fa-volume-high';
+                isMusicPlaying = true;
+            }
+        }
+
+        // Pag-unlock ng Surprise
+        function unlockSurprise() {
+            document.getElementById('unlock-screen').style.display = 'none';
+            document.getElementById('dashboard-screen').style.display = 'block';
+            
+            // Simulan ang background music kapag binuksan
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                musicIcon.className = 'fa-solid fa-volume-high';
+            }).catch(e => console.log('Music start prevented by browser policy.'));
+
+            // Paandarin ang confetti explosion
+            for (let i = 0; i < 100; i++) {
+                setTimeout(createConfetti, i * 20);
+            }
+
+            // Maglagay ng mabagal at tuloy-tuloy na lumulutang na mga puso
+            setInterval(createHeart, 800);
+        }
+
+        // Paglipat-lipat ng tab (Letter, Memories, at Wish)
+        function switchTab(tabId) {
+            // Itago ang lahat ng tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active-tab'));
+
+            // Alisin ang 'active' class sa lahat ng buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Ipakita ang napiling tab at lagyan ng active class ang napiling button
+            document.getElementById(tabId).classList.add('active-tab');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Pagsabog ng Confetti Effect
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'absolute';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.borderRadius = '50%';
+            
+            const colors = ['#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#c77dff', '#e0aaff', '#9d4edd', '#4cc9f0', '#f72585'];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '99';
+            
+            // Random direction at physics ng falling effect
+            confetti.style.transform = `scale(${Math.random()})`;
+            document.body.appendChild(confetti);
+
+            const animation = confetti.animate([
+                { transform: `translate3d(0, 0, 0) rotate(0deg)`, opacity: 1 },
+                { transform: `translate3d(${(Math.random() - 0.5) * 300}px, 105vh, 0) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 2000 + 2000,
+                easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
+            });
+
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Kusang gumagawa ng Lumulutang na mga Puso
+        function createHeart() {
+            const heart = document.createElement('i');
+            heart.className = 'fa-solid fa-heart heart';
+            heart.style.left = (Math.random() * 100) + 'vw';
+            heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        // Interactive Candle Blow Function
+        function blowCandle() {
+            const cakeImage = document.getElementById('birthday-cake');
+            const instruction = document.getElementById('cake-instruction');
+            const blowButton = document.getElementById('blow-btn');
+
+            // Papalitan ang cake GIF na may sindi ng walang sindi
+            // Gagamit tayo ng isang static cute blown cake o simpleng animation
+            cakeImage.src = "bear.gif"; 
+            
+            instruction.innerHTML = "✨ Sana matupad tanan ngim wish and someday maging successful kA! 🤞🏼";
+            blowButton.style.display = "none";
+
+            // Magpasabog muli ng kaunting confetti dahil nanihip na siya ng kandila
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createConfetti, i * 15);
+            }
+        }
+    </script>
+</body>
+</html>
